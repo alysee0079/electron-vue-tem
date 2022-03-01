@@ -12,6 +12,8 @@
 </template>
 
 <script>
+import fs from 'fs'
+console.log(fs)
 export default {
   name: 'app',
   data() {
@@ -25,6 +27,9 @@ export default {
       document.body.className = this.theme = this.theme === 'black-theme' ? 'blue-theme' : 'black-theme'
       this.dialogVisible = !this.dialogVisible
     }
+  },
+  mounted() {
+    console.log(process)
   }
 }
 </script>
