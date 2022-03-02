@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <style>
+          @font-face {
+            font-family: 'iconfont';  /* Project id 3056328 */
+            src: url('//at.alicdn.com/t/font_3056328_e6qk4121cn4.woff2?t=1641890934765') format('woff2'),
+                url('//at.alicdn.com/t/font_3056328_e6qk4121cn4.woff?t=1641890934765') format('woff'),
+                url('//at.alicdn.com/t/font_3056328_e6qk4121cn4.ttf?t=1641890934765') format('truetype');
+         }
+            .iconfont {
+            font-family: 'iconfont' !important;
+            font-size: 16px;
+            font-style: normal;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            cursor: pointer;
+            user-select: none;
+            }
+        html, body, div {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .icon {
+            user-select: none;
+            cursor: pointer;
+        }
+
+        .mask {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.1);
+        }
+
+        .bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .image-canvas {
+            position: absolute;
+            display: none;
+            z-index: 1;
+        }
+
+        .size-info {
+            position: absolute;
+            color: #ffffff;
+            font-size: 12px;
+            background: rgba(40, 40, 40, 0.8);
+            padding: 5px 10px;
+            border-radius: 2px;
+            font-family: Arial Consolas sans-serif;
+            display: none;
+            z-index: 2;
+        }
+
+        .toolbar {
+            position: absolute;
+            color: #343434;
+            font-size: 12px;
+            background: #f5f5f5;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-family: Arial Consolas sans-serif;
+            display: none;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+            z-index: 2;
+            align-items: center;
+        }
+
+        .toolbar .iconfont {
+            font-size: 24px;
+            padding: 2px 5px;
+        }
+        </style>
+        <% if (htmlWebpackPlugin.options.nodeModules) { %>
+        <!-- Add `node_modules/` to global paths so `require` works properly in development -->
+        <script>
+            require('module').globalPaths.push('<%= htmlWebpackPlugin.options.nodeModules.replace(/\\/g, '\\\\') %>')
+        </script>
+        <% } %>
+    </head>
+    <body>
+        <div id="bg" class="bg"></div>
+        <div id="mask" class="mask"></div>
+        <canvas id="canvas" class="image-canvas"></canvas>
+        <div id="size-info" class="size-info"></div>
+        <div id="toolbar" class="toolbar">
+            <span class="iconfont icon" id="tool-reset" style="color: #666">&#xe606;</span>
+            <span class="iconfont icon" id="tool-save" style="font-size: 16px;color: #666">&#xe627;</span>
+            <span class="iconfont icon" id="tool-close" style="color: #df4d4d;">&#xe687;</span>
+            <span class="iconfont icon" id="tool-ok" style="color: #5cc55b;">&#xe60d;</span>
+        </div>
+    </body>
+</html>

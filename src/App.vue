@@ -1,46 +1,51 @@
 <template>
   <div id="app">
-    <el-button type="primary" @click="handleChangeTheme">btn</el-button>
-    <el-dialog title="提示" :visible.sync="dialogVisible" width="30%">
-      <span>这是一段信息</span>
-      <span slot="footer" class="dialog-footer">
-        <el-button @click="dialogVisible = false">取 消</el-button>
-        <el-button type="primary" @click="dialogVisible = false">确 定</el-button>
-      </span>
-    </el-dialog>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-import fs from 'fs'
-console.log(fs)
+import { mapGetters } from 'vuex'
 export default {
-  name: 'app',
-  data() {
-    return {
-      dialogVisible: true,
-      theme: 'black-theme'
+  name: 'App',
+  computed: {
+    ...mapGetters(['errorModal', 'login_account'])
+  },
+  watch: {
+    errorModal: function (val) {
+      let { type, message, duration } = val
+      duration = duration || 0
+      if (typeof message == 'object') {
+        message = JSON.stringify(message, null, 4)
+      }
+      // let {host}=location;
+      // let reg=/dev|test/ig;
+      // if(!reg.test(host)&&code!=401){
+      //   message=`此服务可能出错, 请联系开发人员,错误码:${code||'unknown'}`;
+      // }
+      let config = { message, duration, type }
+      this.$message(config)
     }
+  },
+  created() {
+    window.addEventListener('windowFocus', this.windowFocus)
+  },
+  beforeDestroy() {
+    window.removeEventListener('windowFocus', this.windowFocus)
   },
   methods: {
-    handleChangeTheme() {
-      document.body.className = this.theme = this.theme === 'black-theme' ? 'blue-theme' : 'black-theme'
-      this.dialogVisible = !this.dialogVisible
+    windowFocus() {
+      console.log('windowFocus+++')
     }
-  },
-  mounted() {
-    console.log(process)
   }
 }
 </script>
 
 <style>
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 </style>

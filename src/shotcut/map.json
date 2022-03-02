@@ -1,0 +1,20 @@
+[
+  {
+    "key": "cmd+k",
+    "winkey": "ctrl+k",
+    "name": "logistic",
+    "desc": "打开物流查询"
+  },
+  {
+    "key": "cmd+g",
+    "winkey": "ctrl+g",
+    "name": "goodsSearch",
+    "desc": "打开商品搜索"
+  },
+  {
+    "key": "cmd+h",
+    "winkey": "ctrl+h",
+    "name": "workbench",
+    "desc": "返回主页"
+  }
+]

@@ -1,5 +1,5 @@
 {
-  "name": "electron-vue-demo",
+  "name": "electron-vue-team",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -13,8 +13,14 @@
   },
   "main": "background.js",
   "dependencies": {
+    "@antv/data-set": "^0.10.2",
+    "@antv/g2": "^3.5.7",
+    "axios": "^0.26.0",
     "core-js": "^3.6.5",
+    "electron-log": "^4.4.6",
     "element-ui": "^2.4.5",
+    "md5": "^2.3.0",
+    "mousetrap": "^1.6.3",
     "vue": "^2.6.11",
     "vue-router": "^3.2.0",
     "vuex": "^3.4.0"
