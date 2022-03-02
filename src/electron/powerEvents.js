@@ -1,5 +1,6 @@
-import { powerMonitor } from 'electron'
 // 电源事件注册
+import { powerMonitor } from 'electron'
+
 export function injectPowerEvents(win) {
   // 系统挂起
   powerMonitor.on('suspend', () => {

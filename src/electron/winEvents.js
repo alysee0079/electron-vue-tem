@@ -1,4 +1,6 @@
 // 窗口事件注册
+const isDarwin = process.platform === 'darwin'
+
 export function injectWinEvents(win, tray) {
   // 窗口隐藏
   win.on('show', () => {
@@ -19,7 +21,9 @@ export function injectWinEvents(win, tray) {
   })
   // 窗口关闭
   win.on('close', () => {
-    tray.destroy()
-    win.destroy()
+    if (!isDarwin) {
+      tray.destroy()
+      win.destroy()
+    }
   })
 }

@@ -15,7 +15,6 @@ module.exports = {
     'vue/no-side-effects-in-computed-properties': 'warn'
   },
   globals: {
-    path: 'readonly',
     __static: 'readonly',
     $http: 'readonly'
   }

@@ -1,9 +1,8 @@
 // 系统托盘配置
 import { app, Tray, Menu } from 'electron'
-
-const isDevelopment = process.env.NODE_ENV !== 'production'
+import path from 'path'
 const isDarwin = process.platform === 'darwin'
-const icon_path = isDevelopment ? './public/static/img/logo.png' : path.join(__dirname, '/static/img/logo.png')
+const icon_path = path.join(__static, './static/img/logo.png')
 
 function initTray(win, trayTimer) {
   let tray = null // 系统托盘
